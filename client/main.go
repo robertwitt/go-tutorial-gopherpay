@@ -6,8 +6,13 @@ import (
 	"github.com/robertwitt/go-tutorial-gopherpay/payment"
 )
 
+// PaymentOption interface
+type PaymentOption interface {
+	ProcessPayment(float32) bool
+}
+
 func main() {
-	var option payment.PaymentOption
+	var option PaymentOption
 
 	option = payment.CreateCreditAccount(
 		"Debra Ingram",

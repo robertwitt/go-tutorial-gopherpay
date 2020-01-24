@@ -7,11 +7,6 @@ import (
 	"time"
 )
 
-// PaymentOption interface
-type PaymentOption interface {
-	ProcessPayment(float32) bool
-}
-
 // CreditCard type
 type CreditCard struct {
 	ownerName       string
