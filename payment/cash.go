@@ -6,8 +6,15 @@ import "fmt"
 type Cash struct{}
 
 // CreateCashAccount function
-func CreateCashAccount() *Cash {
-	return &Cash{}
+func CreateCashAccount(chargeCh chan float32) *Cash {
+	cash := &Cash{}
+	go func(chargeCh chan float32) {
+		for amount := range chargeCh {
+			cash.ProcessPayment(amount)
+		}
+	}(chargeCh)
+
+	return cash
 }
 
 // ProcessPayment method

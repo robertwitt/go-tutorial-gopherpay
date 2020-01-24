@@ -1,6 +1,8 @@
 package main
 
 import (
+	"fmt"
+
 	"github.com/robertwitt/go-tutorial-gopherpay/payment"
 )
 
@@ -16,6 +18,9 @@ func main() {
 	)
 	option.ProcessPayment(500)
 
-	option = payment.CreateCashAccount()
-	option.ProcessPayment(500)
+	chargeCh := make(chan float32)
+	option = payment.CreateCashAccount(chargeCh)
+	chargeCh <- 500
+	var a string
+	fmt.Scanln(&a)
 }
