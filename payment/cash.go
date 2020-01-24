@@ -3,7 +3,9 @@ package payment
 import "fmt"
 
 // Cash type
-type Cash struct{}
+type Cash struct {
+	Account
+}
 
 // CreateCashAccount function
 func CreateCashAccount(chargeCh chan float32) *Cash {
